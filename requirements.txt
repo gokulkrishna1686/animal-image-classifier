@@ -3,6 +3,6 @@
 flask
 pillow
 torch==2.5.1+cpu
-torchvision==0.16.1+cpu
+torchvision==0.17.0 +cpu
 gunicorn
 numpy

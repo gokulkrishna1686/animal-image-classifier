@@ -3,6 +3,10 @@ Deep learning-powered web application that identifies animals in images with hig
 
 [Web App Link](https://animal-image-classifier-production-754c.up.railway.app/)
 
+## Demo
+
+![Animal Classifier Demo](model_building_and_experimentation/images/Animal-Image-Classifier-Photo.png)
+
 ## Features
 
 - Image classification using a fine-tuned EfficientNet-B2 model
@@ -58,8 +62,6 @@ Running on http://127.0.0.1:5000/
 
 Open that address in your browser.
 
-Use the upload form on the web page.
-
-Select an image of an animal.
-
-Submit and see the top 3 predicted animal names with confidence scores.
+- Use the upload form on the web page.
+- Select an image of an animal.
+- Submit and see the top 3 predicted animal names with confidence scores.

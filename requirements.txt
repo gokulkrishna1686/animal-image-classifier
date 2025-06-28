@@ -1,5 +1,5 @@
 flask
 pillow
-torch
-torchvision
+torch==2.0.0+cpugit add .
+torchvision==0.15.1+cpu
 gunicorn

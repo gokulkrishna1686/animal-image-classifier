@@ -5,7 +5,7 @@ Deep learning-powered web application that identifies animals in images with hig
 
 ## Demo
 
-![Animal Classifier Demo](model_building_and_experimentation/images/Animal-Image-Classifier-Photo.png)
+![Animal Classifier Demo](model_building_and_experimentation/images/Animal-Image-Classifier-Photo2.png)
 
 ## Features
 

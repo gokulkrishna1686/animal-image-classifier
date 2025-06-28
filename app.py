@@ -2,6 +2,7 @@ import os
 from flask import Flask, request, render_template, jsonify
 import torch
 import torchvision
+from torchvision import transforms
 from PIL import Image
 import torch.nn as nn
 
@@ -46,8 +47,23 @@ def upload_file():
             return jsonify({'error': 'No selected file'})
         
         if file:
-            image = Image.open(file.stream).convert('RGB')
-            image_tensor = transform(image).unsqueeze(0).to(device)
+            try:
+                # 1) read the upload and be certain it’s a plain RGB PIL image
+                image = Image.open(file.stream).convert("RGB")
+
+                # 2) try your pretrained weights' transform first
+                image_tensor = transform(image).unsqueeze(0).to(device)
+
+            except Exception as e:
+                # if that fails, fall back to a manual, rock‑solid transform
+                print("Default transform failed:", e)
+                fallback_transform = transforms.Compose([
+                    transforms.Resize((224, 224)),
+                    transforms.ToTensor(),                                  # converts to float & scales /255
+                    transforms.Normalize(mean=[0.485, 0.456, 0.406],
+                                        std=[0.229, 0.224, 0.225]),
+                ])
+                image_tensor = fallback_transform(image).unsqueeze(0).to(device)
             
             with torch.inference_mode():
                 output = model(image_tensor)

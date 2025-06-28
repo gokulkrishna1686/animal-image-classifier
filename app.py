@@ -48,18 +48,14 @@ def upload_file():
         
         if file:
             try:
-                # 1) read the upload and be certain it’s a plain RGB PIL image
                 image = Image.open(file.stream).convert("RGB")
-
-                # 2) try your pretrained weights' transform first
                 image_tensor = transform(image).unsqueeze(0).to(device)
 
             except Exception as e:
-                # if that fails, fall back to a manual, rock‑solid transform
                 print("Default transform failed:", e)
                 fallback_transform = transforms.Compose([
                     transforms.Resize((224, 224)),
-                    transforms.ToTensor(),                                  # converts to float & scales /255
+                    transforms.ToTensor(),
                     transforms.Normalize(mean=[0.485, 0.456, 0.406],
                                         std=[0.229, 0.224, 0.225]),
                 ])

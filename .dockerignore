@@ -3,7 +3,6 @@ __pycache__/
 *.ipynb
 *.log
 *.csv
-*.txt
 *.md
 *.zip
 *.tar
